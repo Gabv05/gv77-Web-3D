@@ -1,0 +1,81 @@
+let scene, camera, renderer, box, clock, mixer, action = [], mode;
+
+init();
+
+function init() {
+    const assetPath = './';
+
+    clock = new THREE.Clock();
+
+    scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x00aaff);
+
+    camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set = (-5, 25, 20);
+
+    renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    document.body.appendChild(renderer.domElement);
+
+    const ambient = new THREE.HemisphereLight(0xffffbb, 0x080820, 1);
+    scene.add(ambient);
+
+    const light = new THREE.DirectionalLight(0xffffff, 2);
+    light.position.set(0, 10, 2);
+    scene.add(light);
+
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.target.set(1, 2, 0);
+    controls.update();
+
+    mode = 'open';
+    const btn = document.getElementById("btn");
+    btn.addEventListener('click', function() {
+       if (action.length === 2) {
+        if(mode === "open") {
+            action.forEach(action => {
+               action.timeScale = 1;
+            action.reset();  
+        action.play();         
+              });
+        }
+       }
+    });
+
+    const loader = new THREE.GLTFLoader();
+    loader.load(assetPath + 'assets/models/soda_can_opening.glb', function(gltf) 
+    {
+        const model = gltf.scene;
+        scene.add(model);
+
+        mixer = new THREE.AnimationMixer(model);
+        const animations = gltf.animations;
+
+        animations.forEach(clip => {
+            const action = mixer.clipAction(clip);
+            actions.push(action);
+        });
+    });
+
+    window.addEventListener('resize', onResize, false);
+
+    update();
+}
+
+function update() {
+    requestAnimationFrame(animate);
+
+    if (mixer) {
+        mixer.update(clock.getDelta());
+    }
+
+    renderer.render(scene, camera);
+}
+
+function onResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+}
