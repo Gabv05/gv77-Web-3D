@@ -52,8 +52,15 @@ h1, h2, h3, h4, h5, h6 {
     padding: 10px;
     border-radius: 5px;
 }
+
+#main_text h1 {
+    color: rgb(86, 86, 86);
+    font-size: 20px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+}
 #main_text h2 {
-    color: rgba(0,102,153,1);
+    color: rgb(86, 86, 86);
     font-size: 20px;
     margin-top: 0px;
     margin-bottom: 5px;
@@ -211,13 +218,13 @@ There is plenty more styling to do than indicated here, in mobile it still defau
 
 .dropdown-menu
 .dropdown-item {
-    color: #f1ee08;
+    color: #000000;
 }
 
 .dropdown-menu
 .dropdown-item:hover {
-    color: #030303;
-    background-color: #e98074;
+    color: #ffffff;
+    background-color: #212529;
 }
 
 /* CSS rule to style the footer */
@@ -330,13 +337,18 @@ There is plenty more styling to do than indicated here, in mobile it still defau
         margin-top: 7%;
     }
 
+    #main_text h1 {
+        color: crimson;
+        font-size: 30px;
+    }
+
     #main_text h2 {
         color: crimson;
         font-size: 30px;
     }
     
     #main_text h3 {
-        color: darkcyan;
+        color: rgb(72, 72, 72);
         font-size:22px;
     }
     
@@ -408,7 +420,7 @@ There is plenty more styling to do than indicated here, in mobile it still defau
     }
 
     .navbar-text > p {
-        color: rgb(12, 5, 3);
+        color: rgb(255, 255, 255);
         font-size: 18px;
     }
 
@@ -440,13 +452,18 @@ There is plenty more styling to do than indicated here, in mobile it still defau
         margin-top: 20%;
     }
 
+    #main_text h1 {
+        color: crimson;
+        font-size: 30px;
+    }
+
     #main_text h2 {
         color: crimson;
         font-size: 30px;
     }
     
     #main_text h3 {
-        color: darkcyan;
+        color: rgb(64, 64, 64);
         font-size:22px;
     }
     
@@ -522,7 +539,7 @@ There is plenty more styling to do than indicated here, in mobile it still defau
     }
 
     .navbar-text > p {
-        color: rgb(12, 5, 3);
+        color: rgb(255, 255, 255);
         font-size: 23px;
     }
 
